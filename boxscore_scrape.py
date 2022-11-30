@@ -1,9 +1,7 @@
-from datetime import datetime
 import time as t
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import pandas as pd
-import json
 
 
 def boxscore_scrape(driver_path, website):
@@ -14,8 +12,6 @@ def boxscore_scrape(driver_path, website):
     tables = driver.find_elements(by=By.XPATH, value="//table[@class='esakegrid']")
     table_home = tables[0]
     table_away = tables[1]
-    # print(table_home.get_attribute('innerText'))
-    # print(table_away.get_attribute('innerText'))
 
     # stats for HOME team
     df_home = pd.DataFrame(columns=['#', 'NAME', 'MIN', 'P', '2PM-A', '3PM-A', 'FTM-A', 'REBS', 'DREBS', 'OREBS', 'AST',
@@ -44,6 +40,6 @@ def boxscore_scrape(driver_path, website):
         df_away.loc[len(df_away)] = data
     print(df_away)
 
-    df_home.to_json(r'C:\Python\esake-scraper\export_df.json', orient='index')
+    # df_home.to_json(r'C:\Python\esake-scraper\export_df.json', orient='index')
     driver.close()
 
