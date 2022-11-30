@@ -1,7 +1,7 @@
 import time as t
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-import pandas as pd
+import json
 
 
 def boxscore_dictionary(driver_path, website):
@@ -9,12 +9,10 @@ def boxscore_dictionary(driver_path, website):
     driver.get(website)
 
     t.sleep(2)
-    dic = {'date': '10/11/22', 'time':'', 'stadium':'', 'tv-channel':'', 'gameinfo': '',
+    dic = {'date': '', 'time': '', 'stadium': '', 'tv-channel': '', 'gameinfo': '',
            'refs': '',
-           'home': {'name': '', 'players': ''
-                    },
-           'away': {'name': '', 'players': ''
-                    }
+           'home': {'name': '', 'players': ''},
+           'away': {'name': '', 'players': ''}
            }
 
     # getting game info
@@ -22,7 +20,7 @@ def boxscore_dictionary(driver_path, website):
     date_time, general = info_table.split('|', 1)
     date, time = date_time.split('\n')
     stadium_tv, game_info = general.split('	', 1)
-    stadium, tv = stadium_tv.split('/')
+    stadium, tv = stadium_tv.split('/', 1)
     # finding game referees
     refs = driver.find_element(by=By.XPATH,
                                value="/html/body/center/div/div[5]/div/table/tbody/tr[2]/td/div/div/center[1]/table/tbody/tr/td[1]/div[2]").get_attribute('innerText')
@@ -60,6 +58,7 @@ def boxscore_dictionary(driver_path, website):
 
     dic['home']['players'] = home_player_list
 
+
     # AWAY team boxscore
     rows = table_away.find_elements(by=By.TAG_NAME, value="tr")
     away_team, *_ = rows[0].get_attribute('innerText').split('\n')
@@ -80,3 +79,10 @@ def boxscore_dictionary(driver_path, website):
         away_player_list.append(stat_dic)
 
     dic['away']['players'] = away_player_list
+
+    # exporting dictionary as json
+    json_boxscore = json.dumps(dic, indent=4)
+    print(json_boxscore)
+    json_file = open("boxscore.json", "w")
+    json_file.write(json_boxscore)
+    json_file.close()
