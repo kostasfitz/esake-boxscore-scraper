@@ -82,7 +82,6 @@ def boxscore_dictionary(driver_path, website):
 
     # exporting dictionary as json
     json_boxscore = json.dumps(dic, indent=4)
-    print(json_boxscore)
     json_file = open("boxscore.json", "w")
     json_file.write(json_boxscore)
     json_file.close()
