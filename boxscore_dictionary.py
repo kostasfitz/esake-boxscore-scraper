@@ -60,7 +60,6 @@ def boxscore_dictionary(driver_path, website):
 
     dic['home']['players'] = home_player_list
 
-
     # AWAY team boxscore
     rows = table_away.find_elements(by=By.TAG_NAME, value="tr")
     away_team, *_ = rows[0].get_attribute('innerText').split('\n')
