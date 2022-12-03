@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 import json
 
 
-def boxscore_dictionary(driver_path, website):
+def boxscore_dictionary(driver_path, website, game_number):
     driver = webdriver.Chrome(driver_path)
     driver.get(website)
 
@@ -82,6 +82,6 @@ def boxscore_dictionary(driver_path, website):
 
     # exporting dictionary as json
     json_boxscore = json.dumps(dic, indent=4)
-    json_file = open("boxscore.json", "w")
+    json_file = open("boxscore"+game_number+".json", "w")
     json_file.write(json_boxscore)
     json_file.close()
