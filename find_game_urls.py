@@ -6,9 +6,9 @@ def find_game_urls(driver_path, website):
     driver = webdriver.Chrome(driver_path)
     driver.get(website)
 
-    urls = []
+    urls = set()
     containers = driver.find_elements(by=By.XPATH, value="//a[@title='Στατιστικά']")
     for container in containers:
-        urls.append(container.get_attribute('href'))
+        urls.add(container.get_attribute('href'))
 
     return urls
