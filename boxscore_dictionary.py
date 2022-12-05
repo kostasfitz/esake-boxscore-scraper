@@ -87,4 +87,4 @@ def boxscore_dictionary(driver_path, website, game_number):
     json_file.write(json_boxscore)
     json_file.close()
 
-    #upload_json(game_number)
+    upload_json(game_number)
