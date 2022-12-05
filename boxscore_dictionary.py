@@ -1,6 +1,7 @@
 import time as t
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from upload_json import upload_json
 import json
 
 
@@ -85,3 +86,5 @@ def boxscore_dictionary(driver_path, website, game_number):
     json_file = open("boxscore"+game_number+".json", "w")
     json_file.write(json_boxscore)
     json_file.close()
+
+    #upload_json(game_number)
