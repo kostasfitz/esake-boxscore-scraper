@@ -14,7 +14,7 @@ if __name__ == '__main__':
 
     urls = find_game_urls(driver_path, website)
 
-    # Choose method to run parallely
+    # Choose method to run parallelly
     i = 0
     processes = []
     for url in urls:
