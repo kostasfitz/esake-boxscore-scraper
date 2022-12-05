@@ -10,7 +10,7 @@ if __name__ == '__main__':
     driver_path = 'C:\Drivers\chromedriver_win32\chromedriver.exe'
 
     # paste fixture url
-    website = 'https://www.esake.gr/el/action/EsakeResults?idchampionship=DC917125&idteam=&idseason=00000001&series=05'
+    website = 'https://www.esake.gr/el/action/EsakeResults?idchampionship=DC917125&idteam=&idseason=00000001&series=07'
 
     urls = find_game_urls(driver_path, website)
 

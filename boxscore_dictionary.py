@@ -28,8 +28,8 @@ def boxscore_dictionary(driver_path, website, game_number):
     # assign game info values into dictionary
     dic['date'] = date
     dic['time'] = time
-    dic['stadium'] = stadium
-    dic['tv_channel'] = tv
+    dic['stadium'] = stadium.strip()
+    dic['tv_channel'] = tv.strip()
     dic['gameinfo'] = game_info
     dic['refs'] = refs
 
@@ -41,7 +41,7 @@ def boxscore_dictionary(driver_path, website, game_number):
     # HOME team boxscore
     rows = table_home.find_elements(by=By.TAG_NAME, value="tr")
     home_team, *_ = rows[0].get_attribute('innerText').split('\n')
-    dic['home']['name'] = home_team
+    dic['home']['name'] = home_team.strip()
 
     home_player_list = []
     for row in rows[2:-1]:
@@ -63,7 +63,7 @@ def boxscore_dictionary(driver_path, website, game_number):
     # AWAY team boxscore
     rows = table_away.find_elements(by=By.TAG_NAME, value="tr")
     away_team, *_ = rows[0].get_attribute('innerText').split('\n')
-    dic['away']['name'] = away_team
+    dic['away']['name'] = away_team.strip()
 
     away_player_list = []
     for row in rows[2:-1]:
