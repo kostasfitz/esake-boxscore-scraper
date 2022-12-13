@@ -41,7 +41,8 @@ def boxscore_dictionary(driver_path, website, game_number):
     # HOME team boxscore
     rows = table_home.find_elements(by=By.TAG_NAME, value="tr")
     home_team, *_ = rows[0].get_attribute('innerText').split('\n')
-    dic['home']['name'] = home_team.strip()
+    home_temp = home_team.strip()
+    dic['home']['name'] = home_temp.strip('\t')
 
     home_player_list = []
     for row in rows[2:-1]:
@@ -63,7 +64,8 @@ def boxscore_dictionary(driver_path, website, game_number):
     # AWAY team boxscore
     rows = table_away.find_elements(by=By.TAG_NAME, value="tr")
     away_team, *_ = rows[0].get_attribute('innerText').split('\n')
-    dic['away']['name'] = away_team.strip()
+    away_temp = away_team.strip()
+    dic['away']['name'] = away_temp.strip('\t')
 
     away_player_list = []
     for row in rows[2:-1]:
