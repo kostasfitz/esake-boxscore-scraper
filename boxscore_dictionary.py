@@ -10,7 +10,7 @@ def boxscore_dictionary(driver_path, website, game_number):
     driver.get(website)
 
     t.sleep(2)
-    dic = {'date': '', 'time': '', 'stadium': '', 'tv-channel': '', 'gameinfo': '',
+    dic = {'date': '', 'time': '', 'stadium': '', 'tv_channel': '', 'gameinfo': '',
            'refs': '',
            'home': {'name': '', 'players': ''},
            'away': {'name': '', 'players': ''}
@@ -29,7 +29,7 @@ def boxscore_dictionary(driver_path, website, game_number):
     dic['date'] = date
     dic['time'] = time
     dic['stadium'] = stadium.strip()
-    dic['tv-channel'] = tv.strip()
+    dic['tv_channel'] = tv.strip()
     dic['gameinfo'] = game_info
     dic['refs'] = refs
 
