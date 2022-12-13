@@ -29,7 +29,7 @@ def boxscore_dictionary(driver_path, website, game_number):
     dic['date'] = date
     dic['time'] = time
     dic['stadium'] = stadium.strip()
-    dic['tv_channel'] = tv.strip()
+    dic['tv-channel'] = tv.strip()
     dic['gameinfo'] = game_info
     dic['refs'] = refs
 
